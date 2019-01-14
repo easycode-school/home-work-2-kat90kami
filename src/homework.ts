@@ -49,3 +49,4 @@ class Tesla extends Car {
 let auto = new Tesla(100, 50);
 auto.drive(300);
 auto.refuel(50);
+console.log(auto);
