@@ -24,28 +24,30 @@ class Tesla extends Car {
 		return this.mileage;
 	}
 
+	/**
+	 * 
+	 * @param km 
+	 * метод drive увеличивает пробег и уменьшает к-во бензина в зависимости от расхода
+	 */
 	drive(km: number): void {
-		if (km < 0) {
-			console.log('введите к-во км больше нуля');
-		} else {
-			this.mileage += km;
-			this.fuel -= km / 10; // расход 10л на 100км
-			if (this.fuel <= 0) {
-				console.log('нужно заправиться');
-			}
-		}
+		if (km < 0) return console.log('введите к-во км больше нуля');
+		this.mileage += km;
+		this.fuel -= km / 10; // расход 10л на 100км
+		if (this.fuel <= 0) return console.log('нужно заправиться');
 	}
 
+	/**
+	 * 
+	 * @param fuel 
+	 * метод refuel рассчитывает к-во бензина после заправки
+	 */
 	refuel(fuel: number): void {
-		if (fuel < 0) {
-			console.log('введите к-во бензина больше нуля')
-		} else {
-			this.fuel += fuel;
-		}
+		if (fuel < 0) return console.log('введите к-во бензина больше нуля');
+		this.fuel += fuel;
 	}
 }
 
-let auto = new Tesla(100, -50);
+let auto = new Tesla(100, 50);
 auto.drive(300);
 auto.refuel(50);
 console.log(auto);
