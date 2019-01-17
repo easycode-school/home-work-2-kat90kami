@@ -2,14 +2,7 @@ abstract class Car {
 	protected mileage: number;
 	protected fuel: number;
 
-	constructor(mileage: number, fuel: number) {
-		if (mileage < 0 || fuel < 0) {
-			console.log('ошибка ввода данных');
-		} else {
-			this.mileage = mileage;
-			this.fuel = fuel;
-		}
-	}
+	constructor(mileage: number, fuel: number) { }
 
 	public abstract drive(km: number);
 	public abstract refuel(fuel: number);
@@ -17,6 +10,12 @@ abstract class Car {
 
 
 class Tesla extends Car {
+	constructor(mileage: number, fuel: number) {
+		super(mileage, fuel);
+		this.mileage = mileage;
+		this.fuel = fuel;
+	}
+
 	public get statusFuel(): number {
 		return this.fuel;
 	}
@@ -46,7 +45,7 @@ class Tesla extends Car {
 	}
 }
 
-let auto = new Tesla(100, 50);
+let auto = new Tesla(100, -50);
 auto.drive(300);
 auto.refuel(50);
 console.log(auto);
